@@ -104,6 +104,7 @@
 	}
 
 	// publishMetric publishes custom metrics to CloudWatch
+
 	func publishMetric(ctx context.Context, cwClient *cloudwatch.Client, logGroupName string, matches int) error {
 		_, err := cwClient.PutMetricData(ctx, &cloudwatch.PutMetricDataInput{
 			Namespace: aws.String("Quaemon/Errors"),
@@ -137,7 +138,7 @@
 			Statistic:          types.StatisticSum,
 			Threshold:          aws.Float64(1),
 			ActionsEnabled:     aws.Bool(true),
-			AlarmActions:       []string{"arn:aws:sns:us-east-1:accnumber:topic-name"}, // Update with correct SNS ARN
+			AlarmActions:       []string{"arn:aws:sns:us-east-1:941377151026:Default_CloudWatch_Alarms_Topic"}, // Update with correct SNS ARN
 		}
 
 		if matches > 0 {
